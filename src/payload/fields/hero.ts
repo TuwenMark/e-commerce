@@ -33,6 +33,10 @@ export const hero: Field = {
           label: 'Low Impact',
           value: 'lowImpact',
         },
+        {
+          label: 'Custom Hero',
+          value: 'customHero',
+        },
       ],
     },
     richText({
@@ -52,7 +56,9 @@ export const hero: Field = {
       relationTo: 'media',
       required: true,
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        // control if there is Media in the admin to upload file
+        condition: (_, { type } = {}) =>
+          ['highImpact', 'mediumImpact', 'customHero'].includes(type),
       },
     },
   ],
