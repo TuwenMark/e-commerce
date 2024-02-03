@@ -1,15 +1,13 @@
-import React from 'react'
 import { Metadata } from 'next'
 
-import { Gutter } from '../../_components/Gutter'
+import Image from 'next/image'
 import { RenderParams } from '../../_components/RenderParams'
 import { getMeUser } from '../../_utilities/getMeUser'
 import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
 import LoginForm from './LoginForm'
-import Image from 'next/image'
 
-import classes from './index.module.scss'
 import Link from 'next/link'
+import classes from './index.module.scss'
 
 export default async function Login() {
   await getMeUser({
