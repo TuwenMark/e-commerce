@@ -11,8 +11,5 @@ export async function Footer() {
     console.log(error)
   }
 
-
-  return (
-    <FooterComponent footer={footer}/>
-  )
+  return <FooterComponent footer={footer} />
 }

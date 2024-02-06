@@ -1,19 +1,20 @@
 import React from 'react'
+import { draftMode } from 'next/headers'
+
+import { Category, Page } from '../../../payload/payload-types'
+import { fetchDoc } from '../../_api/fetchDoc'
+import { fetchDocs } from '../../_api/fetchDocs'
+import { Blocks } from '../../_components/Blocks'
 import { Gutter } from '../../_components/Gutter'
+import { HR } from '../../_components/HR'
 import Filters from './Filters'
 
 import classes from './index.module.scss'
-import { Blocks } from '../../_components/Blocks'
-import { Category, Page } from '../../../payload/payload-types'
-import { fetchDoc } from '../../_api/fetchDoc'
-import { draftMode } from 'next/headers'
-import { fetchDocs } from '../../_api/fetchDocs'
-import { HR } from '../../_components/HR'
 
 async function Products() {
   let page: Page | null = null
   let categories: Category[] | null = null
-  const { isEnabled: isDraftMode} = draftMode()
+  const { isEnabled: isDraftMode } = draftMode()
 
   try {
     page = await fetchDoc({
@@ -29,7 +30,7 @@ async function Products() {
   return (
     <div className={classes.container}>
       <Gutter className={classes.products}>
-        <Filters />
+        <Filters categories={categories} />
         <Blocks blocks={page?.layout} disableTopPadding={true} />
       </Gutter>
       <HR />
